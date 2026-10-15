@@ -241,14 +241,16 @@ export class AuthService {
     localStorage.clear();
   }
 
-  updateAuthToken(response) {
-    const userRoleCode = response.user?.userRoleCode;
+  updateAuthToken(response: any) {
+    const userRoleCode =
+      response.user?.userRoleCode || response.userRoleCode || "";
 
     this.authentication = {
       username: response.user?.name,
       userRoleCode: userRoleCode,
       token: response.token,
       session: response.session,
+
       user: <any>{
         id: response.user?.id,
         name: response.user?.name,
@@ -256,11 +258,14 @@ export class AuthService {
         imageUrl: response.user?.imageUrl,
         userRoleCode: userRoleCode,
       },
+
       allowedAppActivities: response.allowedAppActivities || [],
       allowedAppModules: response.allowedAppModules || [],
       organization: response.organization || {},
       controlPanelSettings: response.controlPanelSettings || {},
     };
+
+    console.log("AUTH ROLE:", this.authentication.userRoleCode);
   }
 
   isUser(roles) {

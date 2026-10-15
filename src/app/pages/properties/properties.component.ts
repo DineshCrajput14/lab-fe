@@ -11,6 +11,9 @@ import { ErrorHandlingService } from "src/app/utils/services/error-handling.serv
 import { GridApi } from "ag-grid-community";
 import { DeleteModalComponent } from "../common/delete-modal/delete-modal.component";
 
+import { ICellRendererAngularComp } from "ag-grid-angular";
+import { ICellRendererParams } from "ag-grid-community";
+
 @Component({
   selector: "app-properties",
   templateUrl: "./properties.component.html",
